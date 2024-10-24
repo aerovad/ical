@@ -17,10 +17,10 @@ function createICS() {
     // Event details
     const summary = 'Change O2 sensor';
     const now = new Date();
-    const start = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate()).toISOString().replace(/-|:|\.\d+/g, "");
-    const end = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), now.getHours() + 1).toISOString().replace(/-|:|\.\d+/g, "");
+    const startDate = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), 11, 0, 0); // Set to 11:00 AM
+    const endDate = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), 12, 0, 0); // Set to 12:00 PM
     const description = 'This is a reminder to change the O2 sensor.';
-    const location = 'Workshop';
+    const location = 'www.aerovad.com';
 
     // ICS file content
     const icsContent = `
