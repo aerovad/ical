@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create iCal Event for O2 sensor change</title>
+    <title>Create iCal Event for O2 Sensor Change</title>
 </head>
 <body>
 
-<h1>O2 Sensor change iCal Event</h1>
+<h1>Download iCal Event</h1>
 
 <!-- Button to trigger iCal file download -->
 <button onclick="createICS()">Download .ical</button>
@@ -17,10 +17,15 @@ function createICS() {
     // Event details
     const summary = 'Change O2 sensor';
     const now = new Date();
-    const startDate = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), 11, 0, 0); // Set to 11:00 AM
-    const endDate = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), 12, 0, 0); // Set to 12:00 PM
+    
+    // Set the start time to 11:00 AM and end time to 12:00 PM two years from today
+    const startDate = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), 11, 0, 0); // 11:00 AM
+    const endDate = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate(), 12, 0, 0); // 12:00 PM
+    
+    const start = startDate.toISOString().replace(/-|:|\.\d+/g, "");
+    const end = endDate.toISOString().replace(/-|:|\.\d+/g, "");
     const description = 'This is a reminder to change the O2 sensor.';
-    const location = 'www.aerovad.com';
+    const location = 'www.aerovad.com'; // Updated location
 
     // ICS file content
     const icsContent = `
@@ -39,7 +44,7 @@ END:VEVENT
 END:VCALENDAR
     `.trim();
 
-    // Create blob for the ics file
+    // Create blob for the .ics file
     const blob = new Blob([icsContent], { type: 'text/calendar' });
     const url = URL.createObjectURL(blob);
 
